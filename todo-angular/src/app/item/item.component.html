@@ -1,0 +1,9 @@
+<div class='item'>
+    <div class='item-name'>
+        {{item.name}}
+    </div>
+    <div class='actions'>
+        <button (click)="onToggleDone()">{{ item.isDone ? 'Undone' : 'Done' }}</button>
+        <button>Delete</button>
+    </div>
+</div>

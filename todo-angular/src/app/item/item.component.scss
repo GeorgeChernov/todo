@@ -1,0 +1,19 @@
+.item {
+  width: 330px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  background: #f4f4f4;
+
+  .item-name {
+    width: 200px;
+  }
+
+  .actions {
+    width: 130px;
+
+    button {
+      margin-left: 10px;
+    }
+  }
+}
