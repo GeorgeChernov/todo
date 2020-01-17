@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import { ListComponent } from "./components/list/List";
-import { Item } from "./models/Item";
+import { ListComponent } from "../list/List";
+import { Item } from "../../models/Item";
 
 interface State {
   items: Item[];
