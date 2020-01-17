@@ -1,0 +1,7 @@
+.list-item{
+    display: flex;
+}
+
+.list-item button{
+    margin-left: 10px;
+}

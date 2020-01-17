@@ -3,9 +3,7 @@ import './Item.css';
 
 function Item(props) {
   return (
-    <div>
-        Hello {props.name}!
-    </div>
+    <div className="item"></div>
   );
 }
 
