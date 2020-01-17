@@ -1,11 +1,19 @@
 <h3>To Do</h3>
 
-<app-list [items]='todoItems$ | async' (toggleDone)="onToggleDone($event)">
+<app-list
+  [items]="todoItems$ | async"
+  (toggleDone)="onToggleDone($event)"
+  (delete)="onDelete($event)"
+>
 </app-list>
 
 <h3>Done</h3>
 
-<app-list [items]='doneItems$ | async' (toggleDone)="onToggleDone($event)">
+<app-list
+  [items]="doneItems$ | async"
+  (toggleDone)="onToggleDone($event)"
+  (delete)="onDelete($event)"
+>
 </app-list>
 
-<h4>Deleted: {{(deletedItems$ | async).length}}</h4>
+<h4>Deleted: {{ (deletedItems$ | async).length }}</h4>

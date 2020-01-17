@@ -10,8 +10,13 @@ export class ItemComponent {
   @Input() item: ToDoItem;
 
   @Output() toggleDone = new EventEmitter<ToDoItem>();
+  @Output() delete = new EventEmitter<ToDoItem>();
 
   onToggleDone() {
     this.toggleDone.emit(this.item);
+  }
+
+  onDelete(){
+    this.delete.emit(this.item);
   }
 }

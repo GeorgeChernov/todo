@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { ToDoItem } from "src/app/models/todo-item";
 import { Observable } from "rxjs";
 import { ItemListService } from "src/app/services/item-list.service";
-import { filter, map } from "rxjs/operators";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-root",
@@ -21,5 +21,9 @@ export class AppComponent {
 
   onToggleDone(item){
     this.itemListService.toggleDoneItem(item);
+  }
+
+  onDelete(item){
+    this.itemListService.delete(item);
   }
 }

@@ -44,14 +44,21 @@ export class ItemListService {
     return this.subject.asObservable();
   }
 
-  public toggleDoneItem(itemToDone: ToDoItem): void{
-    this.items = this.items.map(
-      item => (item.id === itemToDone.id ? { ...item, isDone: !item.isDone } : item)
+  public toggleDoneItem(itemToDone: ToDoItem): void {
+    this.items = this.items.map(item =>
+      item.id === itemToDone.id ? { ...item, isDone: !item.isDone } : item
     );
     this.broadcast();
   }
 
-  private broadcast(){
+  public delete(itemToDelete: ToDoItem): void {
+    this.items = this.items.map(item =>
+      item.id === itemToDelete.id ? { ...item, isDeleted: true } : { ...item }
+    );
+    this.broadcast();
+  }
+
+  private broadcast() {
     this.subject.next(this.items);
   }
 }

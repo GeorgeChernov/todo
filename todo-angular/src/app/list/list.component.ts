@@ -10,8 +10,13 @@ export class ListComponent {
   @Input() items: ToDoItem[];
 
   @Output() toggleDone = new EventEmitter<ToDoItem>();
+  @Output() delete = new EventEmitter<ToDoItem>();
 
   onToggleDone(item) {
     this.toggleDone.emit(item);
+  }
+
+  onDelete(item) {
+    this.delete.emit(item);
   }
 }
