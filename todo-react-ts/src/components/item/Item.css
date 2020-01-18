@@ -1,7 +1,21 @@
-.list-item{
-    display: flex;
+.item {
+  width: 330px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  background: #f4f4f4;
 }
 
-.list-item button{
-    margin-left: 10px;
+.item-name {
+  width: 200px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.actions {
+  width: 130px;
+}
+
+button {
+  margin-left: 10px;
 }

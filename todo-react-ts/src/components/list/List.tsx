@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import "./List.css";
 import { Item } from "../../models/Item";
 import { ItemComponent } from "../item/Item";
 
@@ -9,11 +10,15 @@ interface Props extends React.Props<any> {
 
 export class ListComponent extends React.Component<Props> {
   public render(): ReactNode {
-    return this.props.items.map(item => (
-      <ItemComponent
-        item={item}
-        toggleDone={this.props.toggleDone}
-      ></ItemComponent>
-    ));
+    return (
+      <div className="list">
+        {this.props.items.map(item => (
+          <ItemComponent
+            item={item}
+            toggleDone={this.props.toggleDone}
+          ></ItemComponent>
+        ))}
+      </div>
+    );
   }
 }

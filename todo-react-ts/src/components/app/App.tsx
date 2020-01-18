@@ -2,40 +2,52 @@ import React from "react";
 import "./App.css";
 import { ListComponent } from "../list/List";
 import { Item } from "../../models/Item";
+import ItemListService from "../../services/item-list.service";
 
 interface State {
-  items: Item[];
+  itemsToDo: Item[];
+  itemsDone: Item[];
+  itemsDeleted: Item[];
 }
 
 class App extends React.Component<{}, State> {
-  private readonly initialItems: Item[] = [
-    {
-      id: "1",
-      name: "test1",
-      isDone: true
-    },
-    {
-      id: "2",
-      name: "test2",
-      isDone: false
-    }
-  ];
+  private service = new ItemListService();
+  private readonly initialItems: Item[] = [];
 
-  state = { items: this.initialItems }; // TODO: to find out how it works
+  state = {
+    itemsToDo: this.initialItems,
+    itemsDone: this.initialItems,
+    itemsDeleted: this.initialItems
+  }; // TODO: to find out how it works
+
+  componentDidMount() {
+    this.service.getItems().subscribe(items =>
+      this.setState({
+        itemsToDo: [...items.filter(item => !item.isDeleted && !item.isDone)],
+        itemsDone: [...items.filter(item => !item.isDeleted && item.isDone)],
+        itemsDeleted: [...items.filter(item => item.isDeleted)]
+      })
+    );
+  }
 
   toggleDone = (item: Item) => {
-    this.setState({
-      ...this.state,
-      items: this.state.items.map(i =>
-        i.id === item.id ? { ...i, isDone: !i.isDone } : { ...i }
-      )
-    });
+    this.service.toggleDoneItem(item);
   };
 
   render() {
     return (
       <div className="App">
-        <ListComponent items={this.state.items} toggleDone={this.toggleDone}></ListComponent>
+        <h3>To Do</h3>
+        <ListComponent
+          items={this.state.itemsToDo}
+          toggleDone={this.toggleDone}
+        ></ListComponent>
+        <h3>Done</h3>
+        <ListComponent
+          items={this.state.itemsDone}
+          toggleDone={this.toggleDone}
+        ></ListComponent>
+        <h4>Deleted: {this.state.itemsDeleted.length}</h4>
       </div>
     );
   }

@@ -1,5 +1,6 @@
-export interface Item{
-    id: string,
-    name: string,
-    isDone: boolean
+export interface Item {
+  id: number;
+  name: string;
+  isDone: boolean;
+  isDeleted: boolean;
 }
