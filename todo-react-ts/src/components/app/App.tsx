@@ -34,6 +34,10 @@ class App extends React.Component<{}, State> {
     this.service.toggleDoneItem(item);
   };
 
+  delete = (item: Item) => {
+    this.service.delete(item);
+  };
+
   render() {
     return (
       <div className="App">
@@ -41,11 +45,13 @@ class App extends React.Component<{}, State> {
         <ListComponent
           items={this.state.itemsToDo}
           toggleDone={this.toggleDone}
+          delete={this.delete}
         ></ListComponent>
         <h3>Done</h3>
         <ListComponent
           items={this.state.itemsDone}
           toggleDone={this.toggleDone}
+          delete={this.delete}
         ></ListComponent>
         <h4>Deleted: {this.state.itemsDeleted.length}</h4>
       </div>

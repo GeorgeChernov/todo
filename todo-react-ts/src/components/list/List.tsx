@@ -6,6 +6,7 @@ import { ItemComponent } from "../item/Item";
 interface Props extends React.Props<any> {
   items: Item[];
   toggleDone: (item: Item) => void;
+  delete: (item: Item) => void;
 }
 
 export class ListComponent extends React.Component<Props> {
@@ -16,6 +17,7 @@ export class ListComponent extends React.Component<Props> {
           <ItemComponent
             item={item}
             toggleDone={this.props.toggleDone}
+            delete={this.props.delete}
           ></ItemComponent>
         ))}
       </div>
